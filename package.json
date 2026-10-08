@@ -1,0 +1,73 @@
+{
+  "name": "playload",
+  "version": "0.1.0",
+  "description": "Fun, themeable file upload. Shoot files through a hoop, grab them with a claw, launch them as rockets, or use the classic dropzone. Web component + React wrapper.",
+  "author": "Babar ali",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "./dist/playload.umd.cjs",
+  "module": "./dist/playload.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/playload.js",
+      "require": "./dist/playload.umd.cjs"
+    },
+    "./playload.css": "./dist/playload.css",
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    }
+  },
+  "sideEffects": [
+    "./dist/playload.js",
+    "./dist/playload.umd.cjs"
+  ],
+  "keywords": [
+    "file-upload",
+    "dropzone",
+    "upload",
+    "game",
+    "web-component",
+    "drag-and-drop",
+    "react",
+    "rocket",
+    "claw-machine",
+    "basketball",
+    "folder-upload",
+    "custom-element",
+    "file-input",
+    "upload-progress"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build -c vite.react.config.ts && tsc -p tsconfig.build.json && node --experimental-strip-types scripts/emit-css.ts",
+    "typecheck": "tsc --noEmit",
+    "test:physics": "node --experimental-strip-types scripts/sweep.ts",
+    "test:package": "node scripts/smoke-package.mjs",
+    "prepublishOnly": "node scripts/check-release.mjs && npm run typecheck && npm run build && npm run test:package"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^18.3.31", 
+    "@types/react-dom": "^18.3.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}
